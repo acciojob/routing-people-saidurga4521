@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./../styles/App.css";
-import {
-  BrowserRouter,
-  Link,
-  Switch,
-  Route,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 
 const App = () => {
   const [inputData, setInputData] = useState([]);
@@ -51,24 +45,23 @@ const UserDetails = ({ inputData }) => {
 
   return (
     <>
-      <h1>User Details</h1>
-      <h3>
-        Name: <span>{userData.name}</span>
-      </h3>
-      <h3>
-        Username: <span>{userData.username}</span>
-      </h3>
-      <h3>
-        Email: <span>{userData.email}</span>
-      </h3>
-      <h3>
-        Phone: <span>{userData.phone}</span>
-      </h3>
-      <h3>
-        Website: <span>{userData.website}</span>
-      </h3>
+      <h1>User List</h1>
+      <p>
+        <strong> Name</strong>: <span>{userData.name}</span>
+      </p>
+      <p>
+        <strong>UserName</strong>:<span>{userData.username}</span>
+      </p>
+      <p>
+        <strong>Email</strong>:<span>{userData.email}</span>
+      </p>
+      <p>
+        <strong>Phone</strong>:<span>{userData.phone}</span>
+      </p>
+      <p>
+        <strong>Website</strong>:<span>{userData.website}</span>
+      </p>
     </>
   );
 };
-
 export default App;
