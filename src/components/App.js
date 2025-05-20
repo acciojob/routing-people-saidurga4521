@@ -14,23 +14,21 @@ const App = () => {
         setLoading(false);
       });
   }, []);
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <BrowserRouter>
-          <>
-            <Layout inputData={inputData} />
-            <Switch>
-              <Route path="/users/:id">
-                <UserDetails inputData={inputData} />
-              </Route>
-            </Switch>
-          </>
-        </BrowserRouter>
-      )}
+      <BrowserRouter>
+        <>
+          <Layout inputData={inputData} />
+          <Switch>
+            <Route path="/users/:id">
+              <UserDetails inputData={inputData} />
+            </Route>
+          </Switch>
+        </>
+      </BrowserRouter>
     </div>
   );
 };
