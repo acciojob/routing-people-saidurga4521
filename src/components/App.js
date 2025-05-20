@@ -61,7 +61,7 @@ const UserDetails = ({ inputData }) => {
   return (
     <>
       <p>Name: {userData.name}</p>
-      <p>UserName: {userData.username}</p>
+      <p>Username: {userData.username}</p>
       <p>Email: {userData.email}</p>
       <p>Phone: {userData.phone}</p>
       <p>Website: {userData.website}</p>
