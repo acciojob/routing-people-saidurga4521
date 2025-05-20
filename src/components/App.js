@@ -24,7 +24,7 @@ const App = () => {
           <>
             <Layout inputData={inputData} />
             <Switch>
-              <Route path="/:id">
+              <Route path="/users/:id">
                 <UserDetails inputData={inputData} />
               </Route>
             </Switch>
@@ -42,7 +42,7 @@ const Layout = ({ inputData }) => {
       <ul>
         {inputData.map((details) => (
           <li key={details.id}>
-            <Link to={`/${details.id}`}>{details.name}</Link>
+            <Link to={`/users/${details.id}`}>{details.name}</Link>
           </li>
         ))}
       </ul>
@@ -60,11 +60,11 @@ const UserDetails = ({ inputData }) => {
 
   return (
     <>
-      <p>Name: {userData.name}</p>
-      <p>UserName: {userData.username}</p>
-      <p>Email: {userData.email}</p>
-      <p>Phone: {userData.phone}</p>
-      <p>Website: {userData.website}</p>
+      <p>Name:{userData.name}</p>
+      <p>UserName:{userData.username}</p>
+      <p>Email:{userData.email}</p>
+      <p>Phone:{userData.phone}</p>
+      <p>Website:{userData.website}</p>
     </>
   );
 };
