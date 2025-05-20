@@ -46,21 +46,11 @@ const UserDetails = ({ inputData }) => {
   return (
     <>
       <h1>User List</h1>
-      <p>
-        <strong> Name</strong>: <span>{userData.name}</span>
-      </p>
-      <p>
-        <strong>UserName</strong>:<span>{userData.username}</span>
-      </p>
-      <p>
-        <strong>Email</strong>:<span>{userData.email}</span>
-      </p>
-      <p>
-        <strong>Phone</strong>:<span>{userData.phone}</span>
-      </p>
-      <p>
-        <strong>Website</strong>:<span>{userData.website}</span>
-      </p>
+      <p>Name:{userData.name}</p>
+      <p>UserName:{userData.username}</p>
+      <p>Email:{userData.email}</p>
+      <p>Phone:{userData.phone}</p>
+      <p>Website:{userData.website}</p>
     </>
   );
 };
