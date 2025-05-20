@@ -15,7 +15,7 @@ const App = () => {
           setInputData(data);
           setLoading(false);
         });
-    }, 500);
+    }, 1000);
   }, []);
 
   if (loading) {
@@ -27,7 +27,7 @@ const App = () => {
       <>
         <Layout inputData={inputData} />
         <Switch>
-          <Route path="/:id">
+          <Route path="/users//:id">
             <UserDetails inputData={inputData} />
           </Route>
         </Switch>
@@ -42,7 +42,7 @@ const Layout = ({ inputData }) => (
     <ul>
       {inputData.map((user) => (
         <li key={user.id}>
-          <Link to={`/${user.id}`}>{user.name}</Link>
+          <Link to={`/users//${user.id}`}>{user.name}</Link>
         </li>
       ))}
     </ul>
