@@ -4,30 +4,21 @@ import "./../styles/App.css";
 
 const App = () => {
   const [inputData, setInputData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 👇 Add delay to let Cypress catch 'Loading...'
-    setTimeout(() => {
-      fetch("https://jsonplaceholder.typicode.com/users")
-        .then((res) => res.json())
-        .then((data) => {
-          setInputData(data);
-          setLoading(false);
-        });
-    }, 1000);
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => {
+        setInputData(data);
+      });
   }, []);
-
-  if (loading) {
-    return <div>Loading...</div>; // ✅ Cypress expects this
-  }
 
   return (
     <BrowserRouter>
       <>
         <Layout inputData={inputData} />
         <Switch>
-          <Route path="/users//:id">
+          <Route path="/users/:id">
             <UserDetails inputData={inputData} />
           </Route>
         </Switch>
@@ -42,7 +33,7 @@ const Layout = ({ inputData }) => (
     <ul>
       {inputData.map((user) => (
         <li key={user.id}>
-          <Link to={`/users//${user.id}`}>{user.name}</Link>
+          <Link to={`/users/${user.id}`}>{user.name}</Link>
         </li>
       ))}
     </ul>
@@ -52,7 +43,19 @@ const Layout = ({ inputData }) => (
 const UserDetails = ({ inputData }) => {
   const id = parseInt(window.location.pathname.split("/").reverse()[0], 10);
   const user = inputData.find((u) => u.id === id);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
 
+    return () => clearTimeout(timer);
+  }, [id]);
+
+  if (loading) {
+    console.log("rendering");
+    return <div>Loading...</div>;
+  }
   if (!user) return <div>Loading user details...</div>;
 
   return (
